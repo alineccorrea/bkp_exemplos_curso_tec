@@ -7,6 +7,8 @@ Backup de materiais vistos em algumas das aulas práticas no ensino técnico.
   <img align="center" alt="Aline-HTML" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg">
   <img align="center" alt="Aline-CSS" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg">
   <img align="center" alt="Aline-Js" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
+  <img align="center" alt="Aline-bootstrap" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg">
+  <img align="center" alt="Aline-php" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg">
 </div>
 
 #### Exemplos:
