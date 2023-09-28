@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function ler(){
+                //Pega o valor que está dentro do session storage
+                var valorDoStorage;
+                valorDoStorage = sessionStorage.getItem("animalStorage");
+                //Mostra o valor lido de dentro do session storage
+                alert("Valor armazenado no Session Storage: " + valorDoStorage);
+            }
+            function salvar(){
+                //Pega o texto digitado na caixinha
+                var valorDaCaixinha;
+                valorDaCaixinha = document.getElementById("txtAnimal").value;
+                //Armazena o texto digitado dentro do session storage com o nome "animalStorage"
+                sessionStorage.setItem("animalStorage",valorDaCaixinha);
+                //Mostra uma mensagem de sucesso e limpa a caixinha
+                alert("Session Storage atualizado!");
+                document.getElementById("txtAnimal").value = "";
+            }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <h3>Exemplos de Utilização do Storage com Javascript</h3>
+            <ul>
+                <li><a href="exemplo1.html">Exemplo 1</a></li>
+                <li><a href="exemplo2.html">Exemplo 2</a></li>
+                <li><a href="exemplo3.html">Exemplo 3</a></li>
+            </ul>
+        </nav>        
+        <h3>Exemplo 1</h3>
+        <p>Incluir um valor simples no Storage</p>
+        <p>
+            Que animal de estimação você possui?
+            <input type="text" id="txtAnimal" />
+        </p>
+        <input type="button" value="Salvar no Storage" onclick="salvar();" />
+        <input type="button" value="Ler do Storage" onclick="ler();" />        
+    </body>
+</html>

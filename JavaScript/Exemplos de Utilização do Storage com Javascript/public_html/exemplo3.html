@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+        //Objeto Pet
+        function Pet(){
+            this.tipo = document.getElementById("txtAnimal").value;
+            this.nome = document.getElementById("txtNome").value;
+        }
+
+        function ler(){
+            //Pega o valor que está dentro do session storage
+            var valorDoStorage;
+            valorDoStorage = sessionStorage.getItem("petsNoStorage");
+            //Mostra o valor lido de dentro do session storage
+            alert("Valor armazenado no Session Storage:" + valorDoStorage);
+            //Transforma o valor lido de dentro do session storage em um array
+            var arrayPets = JSON.parse(valorDoStorage);
+            alert("Valores transformados em objetos:");
+            //Percorre todos os elementos do array, mostrando o objeto guardado em cada elemento
+            for (i=0; i < arrayPets.length; i++){
+                alert("Nome: " + arrayPets[i].nome + "\n" + "Tipo: " + arrayPets[i].tipo);
+            }
+        }
+
+        function salvar(){
+            //Pega o valor que está dentro do session storage
+            var jsonPets;
+            jsonPets = sessionStorage.getItem("petsNoStorage");
+            //Cria um array para adicionar novos Pets
+            var arrayPets;
+            //Verifica o valor que veio do session storage. 
+            //Se já havia algum valor guardado lá, joga esse valor dentro do array.
+            //Se não havia, faz um array novo.
+            if(jsonPets != null){
+                arrayPets = JSON.parse(jsonPets);
+            }else{
+                arrayPets = new Array();
+            }
+            //Cria um objeto Pet com as informações preenchidas nas caixinhas
+            var meuPet = new Pet(); 
+            //Adiciona esse novo objeto no array
+            arrayPets.push(meuPet);
+            //Transforma o array com todos os seus objetos em um texto JSON
+            jsonPets = JSON.stringify(arrayPets);
+            //Armazena o texto JSON dentro do session storage com o nome "petsNoStorage"
+            sessionStorage.setItem("petsNoStorage",jsonPets);
+            //Mostra uma mensagem de sucesso e limpa as caixinhas
+            alert("Session Storage atualizado!");
+            document.getElementById("txtNome").value = "";
+            document.getElementById("txtAnimal").value = "";
+        }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <h3>Exemplos de Utilização do Storage com Javascript</h3>
+            <ul>
+                <li><a href="exemplo1.html">Exemplo 1</a></li>
+                <li><a href="exemplo2.html">Exemplo 2</a></li>
+                <li><a href="exemplo3.html">Exemplo 3</a></li>
+            </ul>
+        </nav>        
+        <h3>Exemplo 3</h3>
+        <p>Incluir vários objeto no Storage usando array</p>
+        <p>
+            Que animal de estimação você possui?
+            <input type="text" id="txtAnimal" />
+        </p>
+        <p>
+            Qual o nome do seu animal de estimação?
+            <input type="text" id="txtNome" />
+        </p>
+        
+        <input type="button" value="Adicionar no Storage" onclick="salvar();" />
+        <input type="button" value="Ler do Storage" onclick="ler();" />        
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+        //Objeto Pet
+        function Pet(){
+            this.tipo = document.getElementById("txtAnimal").value;
+            this.nome = document.getElementById("txtNome").value;
+        }
+        
+        function ler(){
+            //Pega o valor que está dentro do session storage
+            var valorDoStorage;
+            valorDoStorage = sessionStorage.getItem("animalStorage");
+            //Mostra o valor lido de dentro do session storage
+            alert("Valor armazenado no Session Storage:" + valorDoStorage);
+            //Transforma o valor lido de dentro do session storage em um objeto Pet
+            var meuPet = JSON.parse(valorDoStorage);
+            //Mostra as propriedades do objeto Pet
+            alert("Valor transformado em objeto:\n" + 
+                  "Nome: " + meuPet.nome + "\n" + "Tipo: " + meuPet.tipo);
+        }
+
+        function salvar(){
+            //Cria um objeto Pet com as informações preenchidas nas caixinhas
+            var meuPet = new Pet(); 
+            //Transforma o objeto Pet em texto JSON
+            var jsonMeuPet = JSON.stringify(meuPet);
+            //Armazena o texto JSON dentro do session storage com o nome "animalStorage"
+            sessionStorage.setItem("animalStorage",jsonMeuPet);
+            //Mostra uma mensagem de sucesso e limpa as caixinhas
+            alert("Session Storage atualizado!");
+            document.getElementById("txtAnimal").value = "";
+            document.getElementById("txtNome").value = "";
+        }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <h3>Exemplos de Utilização do Storage com Javascript</h3>
+            <ul>
+                <li><a href="exemplo1.html">Exemplo 1</a></li>
+                <li><a href="exemplo2.html">Exemplo 2</a></li>
+                <li><a href="exemplo3.html">Exemplo 3</a></li>
+            </ul>
+        </nav>        
+        <h3>Exemplo 2</h3>
+        <p>Incluir um objeto no Storage</p>
+        <p>
+            Que animal de estimação você possui?
+            <input type="text" id="txtAnimal" />
+        </p>
+        <p>
+            Qual o nome do seu animal de estimação?
+            <input type="text" id="txtNome" />
+        </p>
+        
+        <input type="button" value="Salvar no Storage" onclick="salvar();" />
+        <input type="button" value="Ler do Storage" onclick="ler();" />        
+    </body>
+</html>
